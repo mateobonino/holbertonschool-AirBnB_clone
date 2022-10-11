@@ -28,8 +28,13 @@ class BaseModel():
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        dict_repr = {'id': self.id, 
-                    'created_at': self.created_at.isoformat(), 
-                    'updated_at': self.updated_at.isoformat(), 
-                    '__class__': self.__class__.__name__}
+        dict_repr = {'id': self.id, '__class__': self.__class__.__name__}
+        try:
+            dict_repr['created_at'] = self.created_at.isoformat()
+        except:
+            dict_repr['created_at'] = self.created_at
+        try:
+            dict_repr['created_at'] = self.updated_at.isoformat()
+        except:
+            dict_repr['created_at'] = self.updated_at
         return dict_repr

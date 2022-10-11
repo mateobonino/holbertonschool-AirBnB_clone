@@ -13,7 +13,7 @@ class BaseModel():
                 if i == 'created_at' or i == 'updated_at':
                     setattr(self, i, datetime.strptime(j, fmt))
                 else:
-                    setattr(self, i, j)
+                    setattr(self, i, j, fmt)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()

@@ -22,7 +22,7 @@ class FileStorage():
         for i in self.__objects:
             new_dict[i] = self.__objects[i].to_dict()
         with open(FileStorage.__file_path, 'w') as f:
-            json.dump(new_dict, f)
+            f.write(json.dumps(new_dict, default=str))
 
     def reload(self):
         from models.base_model import BaseModel

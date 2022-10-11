@@ -14,11 +14,10 @@ class FileStorage():
 
     def new(self, obj):
         key = obj.__class__.__name__ + '.' + obj.id
-        FileStorage.__objects[key] = obj
+        FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
         new_dict = {}
-
         for i in self.__objects:
             new_dict[i] = self.__objects[i].to_dict()
         with open(FileStorage.__file_path, 'w') as f:
@@ -29,6 +28,6 @@ class FileStorage():
         try:
             with open(FileStorage.__file_path, 'r') as f:
                 for i, j in json.load(f).items():
-                    FileStorage.__objects[i] = BaseModel(**j)
+                    self.__objects[i] = BaseModel(**j)
         except FileNotFoundError:
             pass

@@ -27,6 +27,6 @@ class FileStorage():
         try:
             if os.path.exists(FileStorage.__file_path):
                 with open(FileStorage.__file_path, 'r') as f:
-                    FileStorage.__objects[i] = json.load(f)
+                    FileStorage.__objects = json.load(f)
         except FileNotFoundError:
             pass

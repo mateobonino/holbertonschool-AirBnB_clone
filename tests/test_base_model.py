@@ -10,5 +10,6 @@ class TestBaseModel(unittest.TestCase):
         time1 = base1.updated_at
         base1.save()
         time2 = base1.updated_at
-        self.assertNotEqual(time1, time1)
+        self.assertNotEqual(time1, time2)
+
 

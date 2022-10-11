@@ -14,12 +14,11 @@ class FileStorage():
 
     def new(self, obj):
         key = obj.__class__.__name__ + '.' + str(obj.id)
-        FileStorage.__objects[key] = obj
+        FileStorage.__objects[key] = obj.to_dict()
 
     def save(self):
         with open(FileStorage.__file_path, 'w') as f:
-            # f.write(json.dumps(FileStorage.__objects, default=str))
-            json.dumps(FileStorage.__file_path, f, default=str)
+            f.write(json.dumps(FileStorage.__objects, default=str))
 
     def reload(self):
         try:

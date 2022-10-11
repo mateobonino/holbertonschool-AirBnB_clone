@@ -11,7 +11,7 @@ class BaseModel():
             fmt = '%Y-%m-%dT%H:%M:%S.%f'
             for i, j in kwargs.items():
                 if i == 'created_at' or i == 'updated_at':
-                    setattr(i, j, datetime.strptime(datetime.datetime.now(), fmt))
+                    setattr(i, j, datetime.strptime(datetime.now(), fmt))
                 else:
                     setattr(self, i, j)
         else:

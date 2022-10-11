@@ -14,7 +14,7 @@ class FileStorage():
 
     def new(self, obj):
         key = obj.__class__.__name__ + '.' + obj.id
-        FileStorage.__objects[key] = obj.to_dict()
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """ new_dict = {}
@@ -25,8 +25,10 @@ class FileStorage():
             f.write(json.dumps(self.__objects, default=str))
 
     def reload(self):
+        from models.base_model import BaseModel
         try:
             with open(FileStorage.__file_path, 'r') as f:
-                 FileStorage.__objects = json.loads(f)
+                for i, j in json.load(f).items():
+                    FileStorage.__objects = BaseModel(**j)
         except FileNotFoundError:
             pass

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""The console"""
 import cmd
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -10,6 +11,7 @@ from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
+    """Command interpreter"""
     prompt = '(hbnb)'
 
     def EOF(self):

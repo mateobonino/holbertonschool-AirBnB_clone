@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """The console"""
 import cmd
 from models.amenity import Amenity

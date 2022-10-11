@@ -3,17 +3,17 @@
 
 import json
 from models.base_model import BaseModel
-
+import os.path
 
 class FileStorage():
     __file_path = 'file.json'
     __objects = {}
 
     def all(self):
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
-        key = self.__class__.__name__ + '.' + str(obj.id)
+        key = obj.__class__.__name__ + '.' + str(obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -22,3 +22,14 @@ class FileStorage():
             dict_json[i] = j.to_dict()
         with open(FileStorage.__file_path, 'w') as f:
             f.write(json.dumps(dict_json))
+
+    def reload(self):
+        try:
+            if os.path.exists(FileStorage.__file_path):
+                with open(FileStorage.__file_path, 'r') as f:
+                    json_dict = json.load(f)
+                    for i, j in json_dict.items():
+                        items = eval(j['__class__'])(**j)
+                        FileStorage.__objects[i] = items
+        except FileNotFoundError:
+            pass

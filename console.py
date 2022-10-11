@@ -25,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
     def help_EOF(self):
         print("Quit command to exit the program\n")
 
-    def emptyline():
+    def emptyline(self):
         pass
 
 if  __name__ == '__main__':

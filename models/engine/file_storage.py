@@ -21,7 +21,7 @@ class FileStorage():
         for i, j in FileStorage.__objects.items():
             dict_json[i] = j.to_dict()
         with open(FileStorage.__file_path, 'w') as f:
-            json.dumps(dict_json, f)
+            f.write(json.dumps(dict_json))
 
     def reload(self):
         try:

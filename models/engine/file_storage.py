@@ -22,6 +22,3 @@ class FileStorage():
             dict_json[i] = j.to_dict()
         with open(FileStorage.__file_path, 'w') as f:
             f.write(json.dumps(dict_json))
-
-    def reload(self):
-        __objects

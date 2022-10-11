@@ -18,7 +18,8 @@ class FileStorage():
 
     def save(self):
         with open(FileStorage.__file_path, 'w') as f:
-            f.write(json.dumps(FileStorage.__objects, default=str))
+            # f.write(json.dumps(FileStorage.__objects, default=str))
+            json.dump(FileStorage.__file_path, f, default=str)
 
     def reload(self):
         try:

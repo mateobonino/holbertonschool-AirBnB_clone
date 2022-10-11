@@ -27,7 +27,6 @@ class FileStorage():
     def reload(self):
         try:
             with open(FileStorage.__file_path, 'r') as f:
-                 json_dict = json.loads(f.read())
-
+                 FileStorage.__objects = json.loads(f)
         except FileNotFoundError:
             pass

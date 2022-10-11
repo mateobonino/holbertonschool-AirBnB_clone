@@ -10,10 +10,10 @@ class FileStorage():
     __objects = {}
 
     def all(self):
-        return self.__objects
+        return FileStorage.__objects
 
     def new(self, obj):
-        key = self.__class__.__name__ + '.' + str(obj.id)
+        key = obj.__class__.__name__ + '.' + str(obj.id)
         FileStorage.__objects[key] = obj
 
     def save(self):

@@ -6,4 +6,4 @@ import unittest
 class TestFileStorage(unittest.TestCase):
     def test_all(self):
         obj = FileStorage()
-        self.assertEqual(hasattr(obj, 'all'), True)
+        self.assertTrue(hasattr(obj, 'all'), True)

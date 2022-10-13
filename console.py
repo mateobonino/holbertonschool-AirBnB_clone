@@ -78,6 +78,10 @@ class HBNBCommand(cmd.Cmd):
                     if var2[1] == var[1]:
                         my_dict.pop(obj)
                         return
+                    #var2 = obj.split(".")
+                    #if var2[1] == var[1]:
+                    my_dict.pop(obj)
+                    return
                 print("** no instance found **")
 
     def do_all(self, arg):
@@ -92,6 +96,10 @@ class HBNBCommand(cmd.Cmd):
                     var2 = obj.split(".")
                     if var2[1] == var[1]:
                         print("{}".format(my_dict[obj]))
+                    #var2 = obj.split(".")
+                    #if var2[1] == var[1]:
+                    lis.append(my_dict[obj])
+                    print("{}".format(lis))
 
     def do_update(self,arg):
         """Updates an instance based on the class name"""

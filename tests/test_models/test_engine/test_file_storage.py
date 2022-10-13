@@ -7,3 +7,5 @@ class TestFileStorage(unittest.TestCase):
     def test_all(self):
         obj = FileStorage()
         self.assertTrue(hasattr(obj, 'all'), True)
+        self.assertTrue(hasattr(obj, 'save'), True)
+        self.assertTrue(hasattr(obj, 'new'), True)

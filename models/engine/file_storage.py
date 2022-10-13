@@ -42,5 +42,5 @@ class FileStorage():
                     splitted = str(i).split('.')
                     if splitted[0] in classes_dict.keys():
                         self.__objects[i] = classes_dict[splitted[0]](**j)
-        except FileNotFoundError:
+        except:
             pass

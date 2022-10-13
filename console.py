@@ -37,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name mission **")
         else:
             if arg in self.ClassList:
-                new = eval(arg)()
+                new = eval("{}()".format(arg))
                 new.save()
                 print("{}".format(new.id))
             else:

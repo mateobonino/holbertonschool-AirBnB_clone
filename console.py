@@ -37,15 +37,15 @@ class HBNBCommand(cmd.Cmd):
             print("** class name mission **")
         else:
             if arg in self.ClassList:
-                new = eval(arg)
+                new = eval(arg)()
                 new.save()
                 print("{}".format(new.id))
             else:
                 print("** class doesn't exist **")
 
     def do_show(self, arg):
-        var = arg.split("")
-        if var[1] == 1 and var[0] == "":
+        var = arg.split(" ")
+        if len(var) == 1 and var[0] == "  ":
             print("** class name missing **")
         else:
             if var[0] not in self.ClassList:
@@ -56,11 +56,10 @@ class HBNBCommand(cmd.Cmd):
                 my_dict = storage.all()
                 for obj in my_dict:
                     print("{}".format(my_dict[obj]))
-                print("** no instance found **")
     
     def do_destroy(self, arg):
-        var = arg.split("")
-        if var[1] == 1 and var[0] == "":
+        var = arg.split(" ")
+        if len(var) == 1:
             print("** class name missing **")
         else:
             if var[0] not in self.ClassList:
@@ -73,7 +72,28 @@ class HBNBCommand(cmd.Cmd):
                     my_dict.pop(obj)
                 print("** no instance found **")
 
+    def do_all(self, arg):
+        if arg:
+            if arg not in self.ClassList:
+                print("** class doesn't exist **")
+            else:
+                my_dict = storage.all()
+                for obj in my_dict:
+                    print("{}".format(my_dict[obj]))
 
+    def do_update(self,arg):
+        var = arg.split(" ")
+        if len(var) == 1:
+            print("** class name missing **")
+        else:
+            if var[0] not in self.ClassList:
+                print("** class doesn't exist **")
+            elif len(var) == 1:
+                print("** instance id missing **")
+            else:
+                my_dict = storage.all()
+                for obj in my_dict:
+                    print("{}".format(my_dict[obj]))
 
 if  __name__ == '__main__':
     HBNBCommand().cmdloop()

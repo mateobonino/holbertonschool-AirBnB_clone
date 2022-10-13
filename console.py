@@ -75,10 +75,10 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    var2 = obj.split(" ")
+                    var2 = obj.split(".")
                     if var2[1] == var[1]:
                         my_dict.pop(obj)
-            print("** no instance found **")
+                print("** no instance found **")
 
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""

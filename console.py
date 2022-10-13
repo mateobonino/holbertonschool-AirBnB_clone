@@ -74,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    var2 = obj.split(" ")
+                    var2 = obj.split(".")
                     if var2[1] == var[1]:
                         my_dict.pop(obj)
                         return
@@ -82,6 +82,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""
+        lis = []
         var = arg.split(" ")
         if arg:
             if arg not in self.ClassList:
@@ -91,7 +92,8 @@ class HBNBCommand(cmd.Cmd):
                 for obj in my_dict:
                     var2 = obj.split(".")
                     if var2[1] == var[1]:
-                        print("{}".format(my_dict[obj]))
+                        lis.append(my_dict[obj])
+                        print("{}".format(lis))
 
     def do_update(self,arg):
         """Updates an instance based on the class name"""

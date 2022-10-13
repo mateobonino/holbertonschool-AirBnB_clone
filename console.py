@@ -67,37 +67,42 @@ class HBNBCommand(cmd.Cmd):
         var = arg.split(" ")
         if len(var) == 1 and var[0] == "":
             print("** class name missing **")
-        else:
-            if var[0] not in self.ClassList:
-                print("** class doesn't exist **")
-            elif len(var) == 1:
-                print("** instance id missing **")
-            try:
-                my_dict = storage.all()
-                key = var[0] + '.' + var[1]
-                my_dict[key]
-            except:
-                print("** no instance found **")
-                return
-            with open('file.json', 'w') as f:
-                del my_dict[key]
-                f.write(json.dumps(my_dict, default=str))
-                storage.reload()
+            return
+        if len(var) < 2:
+            print("** instance id missing **")
+            return
+        if var[0] not in self.ClassList:
+            print("** class doesn't exist **")
+        try:
+            my_dict = storage.all()
+            key = var[0] + '.' + var[1]
+            my_dict[key]
+        except:
+            print("** no instance found **")
+            return
+        with open('file.json', 'w') as f:
+            del my_dict[key]
+            f.write(json.dumps(my_dict, default=str))
+            storage.reload()
 
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""
         lis = []
         var = arg.split(" ")
-        if arg:
-            if arg not in self.ClassList:
-                print("** class doesn't exist **")
-            else:
-                my_dict = storage.all()
-                for obj in my_dict:
-                    var2 = obj.split(".")
-                    if var2[1] == var[1]:
-                        lis.append(my_dict[obj])
-                        print("{}".format(lis))
+        my_dict = storage.all()
+        if len(var) == 1 or var[0] == "":
+            for i in my_dict:
+                lis.append(str(my_dict[i]))
+            print(lis)
+            return
+        if var[0] not in self.ClassList:
+            print("** class doesn't exist **")
+            return
+        for obj in my_dict:
+            var2 = obj.split(".")
+            if var2[1] == var[1]:
+                lis.append(str(my_dict[obj]))
+            print(lis)
 
     def do_update(self,arg):
         """Updates an instance based on the class name"""

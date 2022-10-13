@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """The console"""
 import cmd
+import json
 from models.engine.file_storage import FileStorage
 from models.__init__ import storage
 from models.amenity import Amenity
@@ -71,14 +72,18 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             elif len(var) == 1:
                 print("** instance id missing **")
-            else:
+            try:
                 my_dict = storage.all()
-                for obj in my_dict:
-                    #var2 = obj.split(".")
-                    #if var2[1] == var[1]:
-                    my_dict.pop(obj)
-                    return
+                key = var[0] + '.' + var[1]
+                my_dict[key]
+            except:
                 print("** no instance found **")
+                return
+            with open('file.json', 'w') as f:
+                del my_dict[key]
+                f.write(json.dumps(my_dict, default=str))
+                storage.reload()
+
 
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""
@@ -90,10 +95,10 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    #var2 = obj.split(".")
-                    #if var2[1] == var[1]:
-                    lis.append(my_dict[obj])
-                    print("{}".format(lis))
+                    var2 = obj.split(".")
+                    if var2[1] == var[1]:
+                        lis.append(my_dict[obj])
+                        print("{}".format(lis))
 
 
     def do_update(self,arg):

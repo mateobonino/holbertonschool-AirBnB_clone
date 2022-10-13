@@ -55,8 +55,11 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    print("{}".format(my_dict[obj]))
-    
+                    var2 = arg.split(".")
+                    if var2[0] == var[0]:
+                        print("{}".format(my_dict[obj]))
+                print("** no instance found **")
+
     def do_destroy(self, arg):
         var = arg.split(" ")
         if len(var) == 1 and var[0] == " ":
@@ -70,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
                 my_dict = storage.all()
                 for obj in my_dict:
                     my_dict.pop(obj)
-                print("** no instance found **")
+            print("** no instance found **")
 
     def do_all(self, arg):
         if arg:

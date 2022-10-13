@@ -34,12 +34,7 @@ class BaseModel():
 
     def to_dict(self):
         dict_repr = self.__dict__.copy()
-        try:
-            dict_repr['created_at'] = self.created_at.isoformat()
-        except:
-            dict_repr['created_at'] = self.created_at
-        try:
-            dict_repr['updated_at'] = self.updated_at.isoformat()
-        except:
-            dict_repr['updated_at'] = self.updated_at
+        dict_repr['created_at'] = self.created_at.isoformat()
+        dict_repr['updated_at'] = self.updated_at.isoformat()
+        dict_repr['__class__'] = self.__class__.__name__
         return dict_repr

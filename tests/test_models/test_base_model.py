@@ -13,3 +13,11 @@ class TestBaseModel(unittest.TestCase):
         obj.save()
         self.assertEqual(test1, obj.created_at)
         self.assertNotEqual(test2, obj.updated_at)
+
+    def test_str(self):
+        obj = BaseModel()
+        obj_name = obj.__class__.__name__
+        obj_id = obj.id
+        obj_dict = obj.__dict__
+        obj_str = f"[{obj_name}] ({obj_id}) {obj_dict}"
+        self.assertEqual(str(obj), obj_str)

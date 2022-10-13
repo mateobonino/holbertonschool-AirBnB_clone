@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 from models.engine.file_storage import FileStorage
+from models import storage
 import models
 import unittest
 
@@ -11,7 +12,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(obj._FileStorage__file_path, "file.json")
 
     def test_all(self):
-        self.assertEqual(models.storage.all(), FileStorage._FileStorage__objects)
+        self.assertEqual(dict, type(models.storage.all()))
 
     def test_objects(self):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))

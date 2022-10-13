@@ -84,7 +84,6 @@ class HBNBCommand(cmd.Cmd):
                 f.write(json.dumps(my_dict, default=str))
                 storage.reload()
 
-
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""
         lis = []
@@ -99,7 +98,6 @@ class HBNBCommand(cmd.Cmd):
                     if var2[1] == var[1]:
                         lis.append(my_dict[obj])
                         print("{}".format(lis))
-
 
     def do_update(self,arg):
         """Updates an instance based on the class name"""
@@ -120,5 +118,3 @@ class HBNBCommand(cmd.Cmd):
                         return
                 print("** no instance found **")
 
-if  __name__ == '__main__':
-    HBNBCommand().cmdloop()

@@ -5,8 +5,9 @@ import json
 from models.base_model import BaseModel
 import os.path
 
+
 class FileStorage():
-    __file_path = 'file.json'
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -41,5 +42,5 @@ class FileStorage():
                     splitted = str(i).split('.')
                     if splitted[0] in classes_dict.keys():
                         self.__objects[i] = classes_dict[splitted[0]](**j)
-        except FileNotFoundError:
+        except:
             pass

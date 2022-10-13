@@ -73,6 +73,7 @@ class HBNBCommand(cmd.Cmd):
             return
         if var[0] not in self.ClassList:
             print("** class doesn't exist **")
+            return
         try:
             my_dict = storage.all()
             key = var[0] + '.' + var[1]

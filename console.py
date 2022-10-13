@@ -45,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         var = arg.split(" ")
-        if len(var) == 1 and var[0] == "  ":
+        if len(var) == 1 and var[0] == "":
             print("** class name missing **")
         else:
             if var[0] not in self.ClassList:
@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
     
     def do_destroy(self, arg):
         var = arg.split(" ")
-        if len(var) == 1:
+        if len(var) == 1 and var[0] == " ":
             print("** class name missing **")
         else:
             if var[0] not in self.ClassList:

@@ -74,10 +74,10 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    var2 = obj.split(".")
-                    if var2[1] == var[1]:
-                        my_dict.pop(obj)
-                        return
+                    #var2 = obj.split(".")
+                    #if var2[1] == var[1]:
+                    my_dict.pop(obj)
+                    return
                 print("** no instance found **")
 
     def do_all(self, arg):
@@ -90,10 +90,11 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    var2 = obj.split(".")
-                    if var2[1] == var[1]:
-                        lis.append(my_dict[obj])
-                        print("{}".format(lis))
+                    #var2 = obj.split(".")
+                    #if var2[1] == var[1]:
+                    lis.append(my_dict[obj])
+                    print("{}".format(lis))
+
 
     def do_update(self,arg):
         """Updates an instance based on the class name"""

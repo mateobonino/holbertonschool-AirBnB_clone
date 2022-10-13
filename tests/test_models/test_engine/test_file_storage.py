@@ -16,4 +16,4 @@ class TestFileStorage(unittest.TestCase):
 
     def test_reload(self):
         with self.assertRaises(TypeError):
-            models.storage.reload(None)
+            storage.reload(None)

@@ -18,13 +18,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, arg):
         """Quit command to exit the program"""
-        print("")
-        return True
+        exit()
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
-        print("")
-        return True
+        exit()
 
     def emptyline(self):
         """empty line"""
@@ -58,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
                 my_dict = storage.all()
                 for obj in my_dict:
                     var2 = obj.split(".")
-                    if var[1] == var2[1]:
+                    if var2[1] == var[1]:
                         print("{}".format(my_dict[obj]))
                 print("** no instance found **")
 
@@ -103,7 +101,10 @@ class HBNBCommand(cmd.Cmd):
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    print("{}".format(my_dict[obj]))
+                    var2 = obj.split("")
+                    if var2[1] == var[1]:
+                        print("{}".format(my_dict[obj]))
+                print("** no instance found **")
 
 if  __name__ == '__main__':
     HBNBCommand().cmdloop()

@@ -15,4 +15,5 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
     def test_reload(self):
-        self.assertTrue(hasattr(FileStorage, 'reload'), True)
+        with self.assertRaises(TypeError):
+            models.storage.reload(None)

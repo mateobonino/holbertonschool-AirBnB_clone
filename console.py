@@ -33,15 +33,14 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-    if not arg:
         print("** class name mission **")
-    else:
-        if arg in self.ClassList:
-            new = eval(arg)
-            new.save()
-            print("{}".format(new.id))
         else:
-            print("** class doesn't exist **")
+            if arg in self.ClassList:
+                new = eval(arg)
+                new.save()
+                print("{}".format(new.id))
+            else:
+                print("** class doesn't exist **")
 
     def do_show(self, arg):
         var = arg.split("")

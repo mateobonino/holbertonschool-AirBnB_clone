@@ -36,7 +36,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             if arg in self.ClassList:
-                new = eval("{}()".format(arg))
+                new = eval(arg)()
                 new.save()
                 print("{}".format(new.id))
             else:

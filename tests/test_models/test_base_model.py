@@ -3,6 +3,8 @@
 
 import unittest
 from models.base_model import BaseModel
+from datetime import datetime
+
 
 class TestBaseModel(unittest.TestCase):
 
@@ -21,3 +23,8 @@ class TestBaseModel(unittest.TestCase):
         obj_dict = obj.__dict__
         obj_str = f"[{obj_name}] ({obj_id}) {obj_dict}"
         self.assertEqual(str(obj), obj_str)
+
+    def test_to_dict(self):
+        obj = BaseModel()
+        obj_dict = {'id': obj.id, 'created_at': obj.created_at, 'updated_at': obj.updated_at, '__class__': obj.__class__.__name__}
+        self.assertEqual(obj.to_dict(), '')

@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, arg):
         if not arg:
-            print("** class name mission **")
+            print("** class name missing **")
         else:
             if arg in self.ClassList:
                 new = eval("{}()".format(arg))

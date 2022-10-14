@@ -17,3 +17,6 @@ class TestFileStorage(unittest.TestCase):
     def test_reload(self):
         with self.assertRaises(TypeError):
             storage.reload(None)
+
+    def test_all(self):
+        self.assertEqual(dict, type(storage.all()))

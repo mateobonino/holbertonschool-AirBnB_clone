@@ -134,13 +134,14 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return
         for obj in my_dict:
-            line2 = obj.split("")
+            line2 = obj.split(".")
             if line2[1] == line[1]:
                 dictt = line[0] + '.' + line[1]
                 return
         print("** no instance found **")
-        dictt.__dict__(line[2] + line[3])
         return
+        dictt.__dict__[line[2]] = line[3]
+        storage.save()
 
 
 if __name__ == '__main__':

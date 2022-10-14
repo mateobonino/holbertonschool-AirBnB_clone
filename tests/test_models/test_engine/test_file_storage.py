@@ -27,11 +27,3 @@ class TestFileStorage(unittest.TestCase):
     def test_save(self):
         with open(FileStorage._FileStorage__file_path, 'r') as f:
             self.assertEqual(dict, type(json.load(f)))
-
-    def test_base_model_save(self):
-        obj = BaseModel()
-        test1 = obj.created_at
-        test2 = obj.updated_at
-        obj.save()
-        self.assertEqual(test1, obj.created_at)
-        self.assertNotEqual(test2, obj.updated_at)

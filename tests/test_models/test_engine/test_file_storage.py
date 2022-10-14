@@ -2,6 +2,7 @@
 
 from models.engine.file_storage import FileStorage
 from models import storage
+from models.base_model import BaseModel
 import models
 import unittest
 
@@ -20,3 +21,10 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(FileStorage._FileStorage__objects, storage.all())
+
+    def test_base_model(self):
+        obj = BaseModel()
+        updated1 = obj.updated_at
+        obj.save()
+        updated2 = obj.updated_at
+        self.assertNotEqual(updated1, updated2)

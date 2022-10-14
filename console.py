@@ -12,10 +12,19 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = '(hbnb) '
-    ClassList = ["Amenity", "BaseModel", "City", "Place", "Review", "State", "User"]
+    ClassList = [
+        "Amenity",
+        "BaseModel",
+        "City",
+        "Place",
+        "Review",
+        "State",
+        "User"
+    ]
 
     def do_EOF(self, arg):
         """Quit command to exit the program"""
@@ -45,40 +54,40 @@ class HBNBCommand(cmd.Cmd):
         """
         The string representation of an instance based on the class name
         """
-        var = arg.split(" ")
-        if len(var) == 1 and var[0] == "":
+        line = arg.split(" ")
+        if len(line) == 1 and line[0] == "":
             print("** class name missing **")
         else:
-            if var[0] not in self.ClassList:
+            if line[0] not in self.ClassList:
                 print("** class doesn't exist **")
-            elif len(var) == 1:
+            elif len(line) == 1:
                 print("** instance id missing **")
             else:
                 my_dict = storage.all()
                 for obj in my_dict:
-                    var2 = obj.split(".")
-                    if var2[1] == var[1]:
+                    line2 = obj.split(".")
+                    if line2[1] == line[1]:
                         print("{}".format(my_dict[obj]))
                         return
                 print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name"""
-        var = arg.split(" ")
-        if len(var) == 1 and var[0] == "":
+        line = arg.split(" ")
+        if len(line) == 1 and line[0] == "":
             print("** class name missing **")
             return
-        if len(var) < 2:
+        if len(line) < 2:
             print("** instance id missing **")
             return
-        if var[0] not in self.ClassList:
+        if line[0] not in self.ClassList:
             print("** class doesn't exist **")
             return
         try:
             my_dict = storage.all()
-            key = var[0] + '.' + var[1]
+            key = line[0] + '.' + line[1]
             my_dict[key]
-        except:
+        except Exception:
             print("** no instance found **")
             return
         with open('file.json', 'w') as f:
@@ -89,40 +98,50 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Prints all string representation based or not on the class name"""
         lis = []
-        var = arg.split(" ")
+        line = arg.split(" ")
         my_dict = storage.all()
-        if len(var) == 1 or var[0] == "":
+        if len(line) == 1 or line[0] == "":
             for i in my_dict:
                 lis.append(str(my_dict[i]))
             print(lis)
             return
-        if var[0] not in self.ClassList:
+        if line[0] not in self.ClassList:
             print("** class doesn't exist **")
             return
         for obj in my_dict:
-            var2 = obj.split(".")
-            if var2[1] == var[1]:
+            line2 = obj.split(".")
+            if line2[1] == line[1]:
                 lis.append(str(my_dict[obj]))
             print(lis)
 
-    def do_update(self,arg):
+    def do_update(self, arg):
         """Updates an instance based on the class name"""
-        var = arg.split(" ")
-        if len(var) == 1:
+        line = arg.split(" ")
+        my_dict = storage.all()
+        if len(line) == 1 and line[0] == "":
             print("** class name missing **")
-        else:
-            if var[0] not in self.ClassList:
-                print("** class doesn't exist **")
-            elif len(var) == 1:
-                print("** instance id missing **")
-            else:
-                my_dict = storage.all()
-                for obj in my_dict:
-                    var2 = obj.split(" ")
-                    if var2[1] == var[1]:
-                        print("{}".format(my_dict[obj]))
-                        return
-                print("** no instance found **")
+            return
+        if line[0] not in self.ClassList:
+            print("** class doesn't exist **")
+            return
+        if len(line) < 1:
+            print("** instance id missing **")
+            return
+        if len(line) < 2:
+            print("** attribute name missing ** ")
+            return
+        if len(line) < 3:
+            print("")
+            return
+        if len(line) < 4:
+            return
+        for obj in my_dict:
+            line2 = obj.split("")
+            if line2[1] == line[1]:
+                print("{}".format(my_dict[obj]))
+                return
+        print("** no instance found **")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

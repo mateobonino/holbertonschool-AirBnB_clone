@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name"""
         line = arg.split(" ")
         my_dict = storage.all()
-        if len(line) == 1 and line[0] == "":
+        if len(line) < 1 and line[0] == "":
             print("** class name missing **")
             return
         if line[0] not in self.ClassList:
@@ -137,9 +137,10 @@ class HBNBCommand(cmd.Cmd):
             line2 = obj.split(".")
             if line2[1] == line[1]:
                 dictt = my_dict[line[0] + '.' + line[1]]
-                return
-        print("** no instance found **")
-        return
+                break
+        else:
+            print("** no instance found **")
+            return
         dictt.__dict__[line[2]] = line[3]
         storage.save()
 

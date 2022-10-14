@@ -21,3 +21,6 @@ class TestFileStorage(unittest.TestCase):
 
     def test_all(self):
         self.assertEqual(FileStorage._FileStorage__objects, storage.all())
+
+    def test_new(self):
+        self.assertEqual(dict, type(FileStorage._FileStorage__objects))

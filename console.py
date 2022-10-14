@@ -124,23 +124,23 @@ class HBNBCommand(cmd.Cmd):
         if line[0] not in self.ClassList:
             print("** class doesn't exist **")
             return
-        if len(line) < 1:
-            print("** instance id missing **")
-            return
         if len(line) < 2:
-            print("** attribute name missing ** ")
+            print("** no instance found **")
             return
         if len(line) < 3:
-            print("")
+            print("** attribute name missing **")
             return
         if len(line) < 4:
+            print("** value missing **")
             return
         for obj in my_dict:
             line2 = obj.split("")
             if line2[1] == line[1]:
-                print("{}".format(my_dict[obj]))
+                dictt = line[0] + '.' + line[1]
                 return
         print("** no instance found **")
+        dictt.__dict__(line[2] + line[3])
+        return
 
 
 if __name__ == '__main__':

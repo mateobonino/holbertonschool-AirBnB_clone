@@ -24,7 +24,5 @@ class TestFileStorage(unittest.TestCase):
 
     def test_base_model(self):
         obj = BaseModel()
-        updated1 = obj.updated_at
-        obj.save()
-        updated2 = obj.updated_at
-        self.assertNotEqual(updated1, updated2)
+        with self.assertRaises(TypeError):
+            obj.save(self)

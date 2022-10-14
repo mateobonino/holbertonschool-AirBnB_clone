@@ -118,7 +118,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instance based on the class name"""
         line = arg.split(" ")
         my_dict = storage.all()
-        if len(line) < 1 and line[0] == "":
+        if len(line) == 1 and line[0] == "":
             print("** class name missing **")
             return
         if line[0] not in self.ClassList:

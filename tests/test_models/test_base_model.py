@@ -28,3 +28,8 @@ class TestBaseModel(unittest.TestCase):
         obj = BaseModel()
         obj_dict = {'id': obj.id, 'created_at': obj.created_at, 'updated_at': obj.updated_at, '__class__': obj.__class__.__name__}
         # self.assertEqual(obj.to_dict(), '')
+
+    def test_base_model(self):
+        obj = BaseModel()
+        with self.assertRaises(TypeError):
+            obj.save(self)

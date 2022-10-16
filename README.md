@@ -11,6 +11,17 @@ This is the first part of the project which consists of building the console.
  This works as a [Shell](https://github.com/Lautaro1387/holbertonschool-simple_shell).
 It is implemented in the same way but with a specific use, that in this case, we want to be able to manage the objects of our project.
 
+### How to install the console
+Clone this repo:
+```bash
+$ git clone https://github.com/Lautaro1387/holbertonschool-AirBnB_clone
+```
+
+Run the file "console.py"
+```bash
+$ ./console.py
+```
+
 #### Interactive Mode
 ```bash
 $ ./console.py
@@ -76,6 +87,11 @@ destroy --> Deletes an instance based on the class name and id (save the change 
 ** no instance found **
 (hbnb)
 ```
+
+#Flowchart
+Here you have a flowchart to understand you the program works
+![App Screenshot]
+(https://imageup.me/a5l)
 
 ## Authors
 

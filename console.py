@@ -13,6 +13,23 @@ from models.state import State
 from models.user import User
 
 
+def create_update(clas):
+    """Function for create"""
+    if clas == "BaseModel":
+        return BaseModel()
+    if clas == "Amenity":
+        return Amenity()
+    if clas == "City":
+        return City()
+    if clas == "Place":
+        return Place()
+    if clas == "Review":
+        return Review()
+    if clas == "State":
+        return State()
+    if clas == "User":
+        return User()
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = '(hbnb) '
@@ -44,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             if arg in self.ClassList:
-                new = eval(arg)()
+                new = create_update(arg)
                 new.save()
                 print("{}".format(new.id))
             else:

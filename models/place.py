@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+"""Place module doc"""
 import models
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
+    """Place class doc"""
     city_id = ""
     user_id = ""
     name = ""

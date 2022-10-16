@@ -30,6 +30,7 @@ def create_update(clas):
     if clas == "User":
         return User()
 
+
 class HBNBCommand(cmd.Cmd):
     """Command interpreter"""
     prompt = '(hbnb) '

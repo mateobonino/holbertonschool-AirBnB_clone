@@ -88,9 +88,10 @@ destroy --> Deletes an instance based on the class name and id (save the change 
 (hbnb)
 ```
 
-# Flowchart
+## Flowchart
 Here you have a flowchart to understand you the program works
-(https://i.ibb.co/6t35H9S/Diagrama-en-blanco.png)
+
+![Flowchart](https://i.ibb.co/6t35H9S/Diagrama-en-blanco.png)
 
 ## Authors
 

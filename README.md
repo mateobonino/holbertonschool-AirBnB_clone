@@ -90,7 +90,7 @@ destroy --> Deletes an instance based on the class name and id (save the change 
 
 # Flowchart
 Here you have a flowchart to understand you the program works
-![Flowchart](https://imageup.me/a5l)
+![Flowchart](https://imageup.me/images/c1f17ae2-e3ed-4cec-b1bc-bc2f7f36a12d.png)
 
 ## Authors
 

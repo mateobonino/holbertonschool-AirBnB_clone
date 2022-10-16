@@ -72,21 +72,22 @@ class HBNBCommand(cmd.Cmd):
         The string representation of an instance based on the class name
         """
         line = arg.split(" ")
+        my_dict = storage.all()
         if len(line) == 1 and line[0] == "":
             print("** class name missing **")
         else:
             if line[0] not in self.ClassList:
                 print("** class doesn't exist **")
+                return
             elif len(line) == 1:
                 print("** instance id missing **")
-            else:
-                my_dict = storage.all()
-                for obj in my_dict:
-                    line2 = obj.split(".")
-                    if line2[1] == line[1]:
-                        print("{}".format(my_dict[obj]))
-                        return
-                print("** no instance found **")
+                return
+            for obj in my_dict:
+                line2 = obj.split(".")
+                if line2[1] == line[1]:
+                    print("{}".format(my_dict[obj]))
+                    return
+            print("** no instance found **")
 
     def do_destroy(self, arg):
         """Deletes an instance based on the class name"""

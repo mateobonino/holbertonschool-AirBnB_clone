@@ -19,7 +19,8 @@ class TestBaseModel(unittest.TestCase):
 
     def test_str(self):
         """Tests the __str__ method"""
-        self.assertEqual(str, type(str(BaseModel)))
+        obj = BaseModel()
+        self.assertEqual(str(obj), f"[{obj.__class__.__name__}] ({obj.id})     {obj.__dict__}")
 
     def test_to_dict(self):
         """Tests the to_dict method"""

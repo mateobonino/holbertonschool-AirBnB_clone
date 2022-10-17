@@ -7,7 +7,7 @@ from models.review import Review
 class BaseModelClass(unittest.TestCase):
     """Test review"""
     def test_review(self):
-        instance = review()
+        instance = Review()
         self.assertEqual(instance.place_id, '')
         self.assertEqual(instance.user_id, '')
         self.assertEqual(instance.text, '')

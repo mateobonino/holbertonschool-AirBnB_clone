@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """test city"""
 import unittest
-from models.amenity import City
+from models.city import City
 
 
 class BaseModelClass(unittest.TestCase):

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """test place"""
 import unittest
-from models.amenity import Place
+from models.place import Place
 
 
 class BaseModelClass(unittest.TestCase):
     """Test place"""
-    def test_city(self):
+    def test_place(self):
         instance = Place()
         self.assertEqual(instance.city_id, '')
         self.assertEqual(instance.user_id, '')

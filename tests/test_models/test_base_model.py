@@ -25,4 +25,4 @@ class TestBaseModel(unittest.TestCase):
         """Tests the to_dict method"""
         obj = BaseModel()
         obj_dict = {'id': obj.id, 'created_at': obj.created_at, 'updated_at': obj.updated_at, '__class__': obj.__class__.__name__}
-        # self.assertEqual(obj.to_dict(), '')
+        self.assertEqual(dict, type(obj.to_dict()))
